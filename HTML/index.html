@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florista</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Custom CSS to control the height of the carousel */
+        .carousel-item img {
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Custom CSS for navigation icons */
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-link i {
+            font-size: 1.5rem;
+        }
+
+        .popover-content {
+            display: flex;
+            align-items: center;
+        }
+        .popover-content img {
+            max-width: 150px;
+            margin-right: 15px;
+        }
+        .popover-content .details {
+            max-width: 250px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        /* custom-styles.css */
+        .footer {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .footer-top {
+            background-color: #e9ecef;
+            padding: 20px 0;
+        }
+
+        .footer-top a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-top a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-main {
+            padding: 10px 0;
+        }
+        .best-sellers {
+            padding: 40px 0;
+            background-color: #f8f9fa;
+        }
+        .best-sellers .card {
+            position: relative;
+            overflow: hidden;
+        }
+        .best-sellers .card img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        .best-sellers .card:hover img {
+            transform: scale(1.05);
+        }
+        .best-sellers .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        .best-sellers .card:hover .wishlist-btn {
+            display: block;
+        }
+
+        .best-sellers .wishlist-btn.active {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(255, 182, 193, 0.8);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Florista</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-basket"></i>
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item" href="roses.html">Roses</a></li>
+                            <li><a class="dropdown-item" href="lilies.html">Lilies</a></li>
+                            <li><a class="dropdown-item" href="tulips.html">Tulips</a></li>
+                            <li><a class="dropdown-item" href="#">Arrangements</a></li>
+                            <li><a class="dropdown-item" href="#">Gift Sets</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="bi bi-info-circle"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-gear"></i>
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownServices">
+                            <li><a class="dropdown-item" href="#">Wedding Flowers</a></li>
+                            <li><a class="dropdown-item" href="#">Corporate Events</a></li>
+                            <li><a class="dropdown-item" href="#">Funeral Flowers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">
+                            <i class="bi bi-envelope"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel Section -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="shop.html">
+                    <img src="images/slideshow1.webp" class="d-block w-100" alt="Slide 1">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="shop.html">
+                    <img src="images/slideshow2.webp" class="d-block w-100" alt="Slide 2">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <img src="images/slideshow3.webp" class="d-block w-100" alt="Slide 3">
+                </a>
+            </div>
+        </div>
+        <!-- Optional Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Best Sellers Section -->
+    <section class="best-sellers">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Best Sellers</h2>
+            <div class="row">
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller1.webp" class="card-img-top" alt="Best Seller 1">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Fragrant Blessings</h5>
+                            <p class="card-text">Rs. 2,750.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller2.webp" class="card-img-top" alt="Best Seller 2">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Carnival Delight</h5>
+                            <p class="card-text">Rs. 1,350.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller3.webp" class="card-img-top" alt="Best Seller 3">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Pleasant Rose Basket</h5>
+                            <p class="card-text">Rs. 1,850.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller4.webp" class="card-img-top" alt="Best Seller 1">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Royal Celebration</h5>
+                            <p class="card-text">Rs. 2,200.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller5.webp" class="card-img-top" alt="Best Seller 2">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Roses Love</h5>
+                            <p class="card-text">Rs. 2,750.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <div class="card">
+                        <img src="images/bestseller6.webp" class="card-img-top" alt="Best Seller 3">
+                        <button class="wishlist-btn">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <div class="card-body">
+                            <h6 class="card-title">Roses and Lilacs</h5>
+                            <p class="card-text">Starting at Rs. 750.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more best sellers as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Flower Categories -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Our Flower Collections</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/roses.jpg" class="card-img-top" alt="Roses">
+                    <div class="card-body">
+                        <h5 class="card-title">Roses</h5>
+                        <p class="card-text">Elegant and classic, perfect for any occasion.</p>
+                        <!-- Button trigger modal -->
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rosesModal">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="rosesModal" tabindex="-1" aria-labelledby="rosesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="rosesModalLabel">Types of Roses</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/red_rose.jpg" class="img-fluid" alt="Red Rose">
+                                    <p class="mt-2">Red Rose - Symbol of Love</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/white_rose (1).jpg" class="img-fluid" alt="White Rose">
+                                    <p class="mt-2">White Rose - Symbol of Purity</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/yellow_rose (1).jpg" class="img-fluid" alt="Yellow Rose">
+                                    <p class="mt-2">Yellow Rose - Symbol of Friendship</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/lily (1).jpeg" class="card-img-top" alt="Lilies">
+                    <div class="card-body">
+                        <h5 class="card-title">Lilies</h5>
+                        <p class="card-text">Graceful and fragrant, a timeless choice.</p>
+                        <a href="lilies.html" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/tulip (1).jpg" class="card-img-top" alt="Tulips">
+                    <div class="card-body">
+                        <h5 class="card-title">Tulips</h5>
+                        <p class="card-text">Bright and cheerful, perfect for spring.</p>
+                        <a href="tulips.html" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h2>High in Demand: For Best Moments</h2>
+        
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs" id="floristaTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="birthdays-tab" data-bs-toggle="tab" data-bs-target="#birthdays" type="button" role="tab" aria-controls="birthdays" aria-selected="true">Birthdays</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="floral-hampers-tab" data-bs-toggle="tab" data-bs-target="#floral-hampers" type="button" role="tab" aria-controls="floral-hampers" aria-selected="false">Floral Hampers</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="premium-florals-tab" data-bs-toggle="tab" data-bs-target="#premium-florals" type="button" role="tab" aria-controls="premium-florals" aria-selected="false">Premium Florals</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="anniversaries-tab" data-bs-toggle="tab" data-bs-target="#anniversaries" type="button" role="tab" aria-controls="anniversaries" aria-selected="false">Anniversaries</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="congratulations-tab" data-bs-toggle="tab" data-bs-target="#congratulations" type="button" role="tab" aria-controls="congratulations" aria-selected="false">Congratulations</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="flowers-with-gifts-tab" data-bs-toggle="tab" data-bs-target="#flowers-with-gifts" type="button" role="tab" aria-controls="flowers-with-gifts" aria-selected="false">Flowers with Gifts</button>
+            </li>
+        </ul>
+        
+        <!-- Tabs Content -->
+        <div class="tab-content" id="floristaTabsContent">
+            <!-- Birthdays Tab Content -->
+            <div class="tab-pane fade show active" id="birthdays" role="tabpanel" aria-labelledby="birthdays-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab1.png" class="img-fluid" alt="Roses and Lilacs">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';">
+                            <a href="buynow.html" style="text-decoration: none; color: inherit;"><strong>Scarlet Sunrise</strong></a></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab2.png" class="img-fluid" alt="Fresh Blooms">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';">
+                            <strong>Floral Symphony</strong>
+                        </p>
+                        <p> Rs. 1,250.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab3.png" class="img-fluid" alt="Orange Flower Basket">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Flowers and Wishes</strong></p>
+                        <p> Rs. 1,700.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab4.png" class="img-fluid" alt="Orange Flower Basket">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Flowers and Rochers</strong></p>
+                        <p> Rs. 1,350.00</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab5.png" class="img-fluid" alt="Roses and Lilacs">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Enchanting Florals</strong></p>
+                        <p> Rs. 1,150.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab6.png" class="img-fluid" alt="Fresh Blooms">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Dazzles</strong></p>
+                        <p> Rs. 1,450.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab7.png" class="img-fluid" alt="Orange Flower Basket">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Stunner drizzles</strong></p>
+                        <p> Rs. 1,200.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/birthdaytab8.png" class="img-fluid" alt="Orange Flower Basket">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Enchante</strong></p>
+                        <p> Rs. 1,600.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floral Hampers Tab Content -->
+            <div class="tab-pane fade" id="floral-hampers" role="tabpanel" aria-labelledby="floral-hampers-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/floraltab1.jpg" class="img-fluid" alt="Royal Medley">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Blossoms</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab2.jpg" class="img-fluid" alt="Rosy Smiles">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Goldfish</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab3.jpg" class="img-fluid" alt="Goldfish">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>=Spring Beauty</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab4.jpg" class="img-fluid" alt="Goldfish">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Delightful Orientals</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/floraltab5.jpg" class="img-fluid" alt="Royal Medley">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';">
+                            <a href="buynow.html" style="text-decoration: none; color: inherit;"><strong>Scarlet Sunrise</strong></a></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab6.png" class="img-fluid" alt="Rosy Smiles">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Oriental Bow</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab7.png" class="img-fluid" alt="Goldfish">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Fragrant Blooms</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/floraltab8.jpg" class="img-fluid" alt="Goldfish">
+                        <p style="transition: color 0.3s ease;" onmouseover="this.style.color='#D81B60';" onmouseout="this.style.color='';"><strong>Soft Carnations Bunch</strong></p>
+                        <p> Rs. 750.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Florals Tab Content -->
+            <div class="tab-pane fade" id="premium-florals" role="tabpanel" aria-labelledby="premium-florals-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="spicy_peach.jpg" class="img-fluid" alt="Spicy Peach">
+                        <p>Spicy Peach - Rs. 2,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="red_rose_surprise.jpg" class="img-fluid" alt="Red Rose Surprise">
+                        <p>Red Rose Surprise - Rs. 1,600.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="spicy_peach.jpg" class="img-fluid" alt="Spicy Peach">
+                        <p>Spicy Peach - Rs. 2,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="red_rose_surprise.jpg" class="img-fluid" alt="Red Rose Surprise">
+                        <p>Red Rose Surprise - Rs. 1,600.00</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="spicy_peach.jpg" class="img-fluid" alt="Spicy Peach">
+                        <p>Spicy Peach - Rs. 2,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="red_rose_surprise.jpg" class="img-fluid" alt="Red Rose Surprise">
+                        <p>Red Rose Surprise - Rs. 1,600.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="spicy_peach.jpg" class="img-fluid" alt="Spicy Peach">
+                        <p>Spicy Peach - Rs. 2,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="red_rose_surprise.jpg" class="img-fluid" alt="Red Rose Surprise">
+                        <p>Red Rose Surprise - Rs. 1,600.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anniversaries Tab Content -->
+            <div class="tab-pane fade" id="anniversaries" role="tabpanel" aria-labelledby="anniversaries-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="roses_and_lilacs_anniversary.jpg" class="img-fluid" alt="Roses and Lilacs">
+                        <p>Roses and Lilacs - Rs. 800.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="fresh_blooms_anniversary.jpg" class="img-fluid" alt="Fresh Blooms">
+                        <p>Fresh Blooms - Rs. 1,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_anniversary.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,400.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_anniversary.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,400.00</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="roses_and_lilacs_anniversary.jpg" class="img-fluid" alt="Roses and Lilacs">
+                        <p>Roses and Lilacs - Rs. 800.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="fresh_blooms_anniversary.jpg" class="img-fluid" alt="Fresh Blooms">
+                        <p>Fresh Blooms - Rs. 1,500.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_anniversary.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,400.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_anniversary.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,400.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Congratulations Tab Content -->
+            <div class="tab-pane fade" id="congratulations" role="tabpanel" aria-labelledby="congratulations-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="roses_and_lilacs_congrats.jpg" class="img-fluid" alt="Roses and Lilacs">
+                        <p>Roses and Lilacs - Rs. 850.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="fresh_blooms_congrats.jpg" class="img-fluid" alt="Fresh Blooms">
+                        <p>Fresh Blooms - Rs. 1,550.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_congrats.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,450.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flowers with Gifts Tab Content -->
+            <div class="tab-pane fade" id="flowers-with-gifts" role="tabpanel" aria-labelledby="flowers-with-gifts-tab">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="roses_and_lilacs_gifts.jpg" class="img-fluid" alt="Roses and Lilacs">
+                        <p>Roses and Lilacs - Rs. 900.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="fresh_blooms_gifts.jpg" class="img-fluid" alt="Fresh Blooms">
+                        <p>Fresh Blooms - Rs. 1,600.00</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="orange_flower_basket_gifts.jpg" class="img-fluid" alt="Orange Flower Basket">
+                        <p>Orange Flower Basket - Rs. 1,500.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container-fluid p-5 bg-secondary text-white">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>We are passionate about flowers and have been serving our customers with the freshest blooms for over 10 years. Our goal is to bring beauty and joy to every occasion.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="images/florista index banner.jpg" width="500" height="400" class="img-fluid" alt="About Flower Shop">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- footer.html -->
+<footer class="footer bg-light py-4">
+    <div class="container-fluid">
+        <!-- Footer Top Region -->
+        <div class="footer-top">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-2">Delivering smiles since 2004</p>
+                    <p class="mb-4">
+                        Florista's team consists of floral design artists who customize bouquets and floral arrangements using a combination of varied flowers, vases, and accessories to go along with the arrangement.
+                    </p>
+                    <p class="mb-2">
+                        We deliver flowers across 300 cities in India and over 100 countries in the world.
+                    </p>
+                    <p class="mb-4">
+                        Florista has an established network of quality florists around the world, who have been associated with us for over 20 years. So expect the same quality and service in any corner of the world.
+                    </p>
+                    <p class="mb-2">
+                        Call Us on: <a href="tel:+919833567045">xxxxxxxxx</a> / <a href="tel:xxxxxxxx">xxxxxxxxx</a>
+                    </p>
+                    <p class="mb-4">
+                        Email us on: <a href="mailto:contacting@florista.co.in">contacting@florista.co.in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Footer Section -->
+        <div class="footer-main bg-secondary text-light py-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <h5>Get in Touch</h5>
+                        <p class="mb-2">For Flowers and Surprises</p>
+                        <p class="mb-2">Call us on: <a href="tel:xxxxxx" class="text-light">xxxxxxxxx</a> / <a href="tel:xxxxxxxxx" class="text-light">xxxxxxxxx</a></p>
+                        <p class="mb-4">Email: <a href="mailto:contact@florista.in" class="text-light">contacting@florista.co.in</a></p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h5>Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html" class="text-light">Home</a></li>
+                            <li><a href="stores.html" class="text-light">Our Stores in India</a></li>
+                            <li><a href="about.html" class="text-light">About Us</a></li>
+                            <li><a href="contact.html" class="text-light">Contact Us</a></li>
+                            <li><a href="legal.html" class="text-light">Legal</a></li>
+                            <li><a href="terms.html" class="text-light">Terms of Service</a></li>
+                            <li><a href="privacy.html" class="text-light">Privacy Policy</a></li>
+                            <li><a href="refunds.html" class="text-light">Refunds & Returns</a></li>
+                            <li><a href="shipping.html" class="text-light">Shipping Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h5>Information</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="corporate.html" class="text-light">Corporate Plans</a></li>
+                            <li><a href="franchise.html" class="text-light">Own a Florista Franchise</a></li>
+                            <li><a href="locator.html" class="text-light">Franchise Store Locator</a></li>
+                            <li><a href="payment.html" class="text-light">Payment Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center mt-4">
+                        <p class="mb-0">&copy; 2023 Florista. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click event listener to all wishlist buttons
+            const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle the 'active' class on the button
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</html>
